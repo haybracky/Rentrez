@@ -16,3 +16,10 @@ ncbi_ids <- c("HQ433692.1","HQ433694.1","HQ433691.1")
 Bburg<-entrez_fetch(db = "nuccore", id = ncbi_ids, rettype = "fasta")
 
 paste(Bburg)
+
+?strsplit()
+# create a vector of 3 components, one for each seq
+subBburg<- gsub("[^ATGC>]", "", Bburg) # removes gene descriptions
+strsplit(subBburg, ">") # splits genes into seprate elements of a vector
+
+
