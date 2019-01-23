@@ -9,17 +9,15 @@ install.packages("rentrez")
 # load rentrez
 library(rentrez)
 
-?entrez_fetch
 # make a vector containing NCBI accession numbers for the 16S gene of Borrelia
 ncbi_ids <- c("HQ433692.1","HQ433694.1","HQ433691.1")
 # download NCBI fasta file containing gene sequences of the above accession numbers
 Bburg<-entrez_fetch(db = "nuccore", id = ncbi_ids, rettype = "fasta")
-
 paste(Bburg)
 
-?strsplit()
 # create a vector of 3 components, one for each seq
-subBburg<- gsub("[^ATGC>]", "", Bburg) # removes gene descriptions
-strsplit(subBburg, ">") # splits genes into seprate elements of a vector
-
+splitB<- strsplit(Bburg, "\n\n")[[1]] # split sequences
+print(splitB)
+Sequence<- gsub(".*sequence|\n", "", splitB) # remove jargon
+print(Sequence)
 
