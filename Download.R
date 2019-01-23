@@ -21,3 +21,8 @@ print(splitB)
 Sequence<- gsub(".*sequence|\n", "", splitB) # remove jargon
 print(Sequence)
 
+# set vector into data frame
+SeqDat<- as.data.frame(Sequence, row.names=ncbi_ids) 
+
+# output data frame as csv
+write.csv(SeqDat, file="Sequences.csv")
