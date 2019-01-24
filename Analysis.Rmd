@@ -1,0 +1,28 @@
+---
+title: "Analysis"
+author: "Hayley Brackenridge"
+date: '2019-01-23'
+output: html_document
+---
+#Preamble
+ 
+This markdown file contains part 2 of BIOL432 assignment 3 involving DNA sequence analysis.
+
+```{r data analysis}
+MyData<- read.csv("Sequences.csv")
+print(MyData)
+
+# print out each sequence
+print(MyData$Sequence[1]) # seq HQ433692.1
+print(MyData$Sequence[2]) # seq HQ433694.1
+print(MyData$Sequence[3]) # seq HQ433691.1
+
+# count the number of each base pair in each sequence
+MyData$num.a<- str_count(MyData$Sequence, "A")
+MyData$num.t<- str_count(MyData$Sequence, "T")
+MyData$num.g<- str_count(MyData$Sequence, "G")
+MyData$num.c<- str_count(MyData$Sequence, "C")
+
+# 
+```
+
