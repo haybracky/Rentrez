@@ -9,12 +9,14 @@ output: html_document
 This markdown file contains part 2 of BIOL432 assignment 3 involving DNA sequence analysis.
 
 ```{r load data and packages}
+# load packages
 library(dplyr)
 library(knitr)
 library(rentrez)
 library(stringr)
 library(ggplot2)
 
+# load data
 MyData<- read.csv("Sequences.csv")
 print(MyData)
 ```
@@ -87,6 +89,7 @@ head(GC)
 qplot(x=Species, y=perc_GC, data=GC, 
       colour=Species,
       ylab="Percent GC Content") +
+  scale_colour_manual(values = c("#87B6A7", "#403D58", "#FF9B71")) +
   theme_classic()
 ```
 
