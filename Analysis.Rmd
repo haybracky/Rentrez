@@ -13,6 +13,7 @@ library(dplyr)
 library(knitr)
 library(rentrez)
 library(stringr)
+library(ggplot2)
 
 MyData<- read.csv("Sequences.csv")
 print(MyData)
@@ -72,3 +73,20 @@ print(gctab)
 Here is an image of bacteria ![bacteria](bac.jpg)
 
 Here is a link to the wikipedia page about [**Borrelia burgdorferi**](https://en.wikipedia.org/wiki/Borrelia_burgdorferi)
+
+# GC Content Scatterplot
+
+```{r gc cont2}
+GC<- read.csv("GC_content.csv")
+head(GC)
+
+# add %GC col
+GC<- mutate(GC, perc_GC = C + G)
+head(GC)
+
+qplot(x=Species, y=perc_GC, data=GC, 
+      colour=Species,
+      ylab="Percent GC Content") +
+  theme_classic()
+```
+
